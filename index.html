@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activo Empresa Única — Blog independiente de finanzas para estudiantes universitarios</title>
+<meta name="description" content="Blog independiente, informativo y educativo sobre finanzas básicas para estudiantes universitarios: presupuesto, ahorro, deudas y gastos. Sin afiliación bancaria ni comercial.">
+<link rel="canonical" href="https://activoempresaunica.blog/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Activo Empresa Única — Finanzas básicas para estudiantes">
+<meta property="og:description" content="Contenido educativo e independiente sobre manejo del dinero en la etapa universitaria.">
+<meta property="og:url" content="https://activoempresaunica.blog/">
+<meta property="og:locale" content="es_VE">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Activo Empresa Única — style.css
+   Estética editorial impresa llevada al web.
+   ============================================================ */
+
+:root {
+  --color-bg: #F7F4EE;
+  --color-bg-alt: #F1ECE1;
+  --color-ink: #1F1B16;
+  --color-ink-soft: #4A443C;
+  --color-line: #D9D2C2;
+  --color-accent: #8A2E2E;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Cabecera ---------- */
+.site-header {
+  border-bottom: 1px solid var(--color-line);
+  padding: 40px 0 28px;
+}
+
+.site-header .masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: -0.01em;
+}
+
+.site-tag {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.site-nav {
+  margin-top: 18px;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  font-size: 14px;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav a:hover { border-bottom-color: var(--color-ink-soft); }
+
+/* ---------- Aviso de identidad (primera pantalla) ---------- */
+.identity-banner {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  padding: 22px 26px;
+  margin: 28px 0 8px;
+  font-size: 14.5px;
+  color: var(--color-ink-soft);
+}
+
+.identity-banner strong { color: var(--color-ink); }
+
+.identity-banner ul {
+  margin: 10px 0 0 18px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 48px 0 36px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  line-height: 1.2;
+  max-width: 620px;
+}
+
+.hero p {
+  margin-top: 16px;
+  max-width: 560px;
+  color: var(--color-ink-soft);
+  font-size: 17px;
+}
+
+/* ---------- Lista de artículos ---------- */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 44px 0 18px;
+}
+
+.article-list { list-style: none; }
+
+.article-item {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--color-line);
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 20px;
+}
+
+.article-item:first-child { padding-top: 0; }
+
+.article-date {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  padding-top: 4px;
+}
+
+.article-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.article-title:hover { color: var(--color-accent); }
+
+.article-excerpt {
+  margin-top: 8px;
+  color: var(--color-ink-soft);
+  font-size: 15.5px;
+}
+
+.article-meta {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Overlay de artículo / legales ---------- */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 27, 22, 0.55);
+  z-index: 100;
+  padding: 40px 16px;
+  overflow-y: auto;
+}
+
+.overlay.is-open { display: block; }
+
+.overlay-panel {
+  background: var(--color-bg);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 44px 56px;
+  border: 1px solid var(--color-line);
+  position: relative;
+}
+
+.overlay-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.overlay-panel h2 {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  margin-bottom: 6px;
+  padding-right: 60px;
+}
+
+.overlay-meta {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 18px;
+}
+
+.overlay-panel h3 {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  margin: 26px 0 10px;
+}
+
+.overlay-panel p { margin-bottom: 14px; color: var(--color-ink-soft); }
+
+.overlay-panel p strong { color: var(--color-ink); }
+
+.disclaimer-box {
+  margin-top: 28px;
+  padding: 16px 18px;
+  background: var(--color-bg-alt);
+  border-left: 3px solid var(--color-accent);
+  font-size: 14px;
+  color: var(--color-ink-soft);
+}
+
+.affiliation-note {
+  margin-top: 10px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Pie ---------- */
+.site-footer {
+  border-top: 1px solid var(--color-line);
+  margin-top: 60px;
+  padding: 36px 0 48px;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+}
+
+.footer-affiliation {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 13.5px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-legal-links a {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.footer-legal-links a:hover { color: var(--color-ink); }
+
+.footer-copy {
+  margin-top: 22px;
+  font-size: 12.5px;
+  color: #8a8377;
+}
+
+/* ---------- Consentimiento de cookies ---------- */
+.cookie-banner {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: 18px 24px;
+  display: none;
+  z-index: 200;
+  font-size: 13.5px;
+}
+
+.cookie-banner.is-visible { display: flex; }
+
+.cookie-banner-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cookie-btn {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  border: none;
+  padding: 8px 18px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+@media (max-width: 640px) {
+  .site-title { font-size: 27px; }
+  .hero h1 { font-size: 30px; }
+  .article-item { grid-template-columns: 1fr; gap: 6px; }
+  .overlay-panel { padding: 34px 22px 40px; }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Activo Empresa Única",
+  "url": "https://activoempresaunica.blog/",
+  "description": "Blog independiente, informativo y educativo sobre finanzas básicas para estudiantes universitarios.",
+  "inLanguage": "es",
+  "isAccessibleForFree": true,
+  "publishingPrinciples": "https://activoempresaunica.blog/#politica-editorial",
+  "publisher": {
+    "@type": "Person",
+    "name": "Arconiris Sabogal Rodríguez",
+    "email": "soporte@activoempresaunica.blog",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle 13",
+      "addressLocality": "Barquisimeto",
+      "addressCountry": "VE"
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Arconiris Sabogal Rodríguez"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="masthead">
+      <div class="site-title">Activo Empresa Única</div>
+      <div class="site-tag">Blog independiente · Contenido informativo y educativo sobre finanzas</div>
+    </div>
+    <nav class="site-nav">
+      <a onclick="openOverlay('acerca-de')">Acerca de</a>
+      <a onclick="openOverlay('politica-editorial')">Política editorial</a>
+      <a onclick="openOverlay('contacto')">Contacto</a>
+      <a onclick="openOverlay('privacidad')">Privacidad</a>
+      <a onclick="openOverlay('aviso-legal')">Aviso legal</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="identity-banner">
+    <strong>Qué es este sitio:</strong> un blog independiente de divulgación financiera, escrito y publicado por Arconiris Sabogal Rodríguez, dirigido a estudiantes universitarios que quieren entender mejor el manejo de su dinero.
+    <ul>
+      <li><strong>Qué NO es:</strong> no es el sitio oficial de ningún banco, entidad financiera ni institución educativa.</li>
+      <li>No vende productos ni servicios financieros.</li>
+      <li>No presta servicios de asesoría personalizada, crédito ni intermediación.</li>
+      <li>No solicita contraseñas, datos bancarios ni documentos de identidad.</li>
+    </ul>
+  </div>
+
+  <section class="hero">
+    <h1>Finanzas básicas para la vida universitaria</h1>
+    <p>Artículos breves y claros sobre presupuesto, ahorro y deudas, pensados para quien está empezando a manejar su propio dinero. Contenido informativo y educativo, sin promesas ni jerga comercial.</p>
+  </section>
+
+  <h2 class="section-label">Artículos</h2>
+  <ul class="article-list">
+
+    <li class="article-item">
+      <div class="article-date">10 jul 2026</div>
+      <div>
+        <div class="article-title" onclick="openOverlay('a1')">Cómo armar un presupuesto cuando el dinero es limitado</div>
+        <p class="article-excerpt">Un método simple de tres categorías para organizar los ingresos, aunque sean pocos y variables.</p>
+        <div class="article-meta">Por Arconiris Sabogal Rodríguez</div>
+      </div>
+    </li>
+
+    <li class="article-item">
+      <div class="article-date">3 jul 2026</div>
+      <div>
+        <div class="article-title" onclick="openOverlay('a2')">Qué es el ahorro universitario y por qué empezar aunque sea poco</div>
+        <p class="article-excerpt">El hábito importa más que el monto: cómo construir un colchón mínimo desde el primer semestre.</p>
+        <div class="article-meta">Por Arconiris Sabogal Rodríguez</div>
+      </div>
+    </li>
+
+    <li class="article-item">
+      <div class="article-date">26 jun 2026</div>
+      <div>
+        <div class="article-title" onclick="openOverlay('a3')">Cómo evitar deudas innecesarias durante la carrera</div>
+        <p class="article-excerpt">Señales de alerta antes de comprometer dinero futuro y preguntas que conviene hacerse antes de pedir prestado.</p>
+        <div class="article-meta">Por Arconiris Sabogal Rodríguez</div>
+      </div>
+    </li>
+
+    <li class="article-item">
+      <div class="article-date">19 jun 2026</div>
+      <div>
+        <div class="article-title" onclick="openOverlay('a4')">Gastos fijos y gastos variables: la diferencia que cambia tu presupuesto</div>
+        <p class="article-excerpt">Aprender a separarlos es el primer paso para saber cuánto margen real tenés cada mes.</p>
+        <div class="article-meta">Por Arconiris Sabogal Rodríguez</div>
+      </div>
+    </li>
+
+    <li class="article-item">
+      <div class="article-date">12 jun 2026</div>
+      <div>
+        <div class="article-title" onclick="openOverlay('a5')">Cinco hábitos prácticos para llegar mejor a fin de mes</div>
+        <p class="article-excerpt">Ajustes pequeños y sostenibles, sin depender de golpes de suerte ni recortes drásticos.</p>
+        <div class="article-meta">Por Arconiris Sabogal Rodríguez</div>
+      </div>
+    </li>
+
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-affiliation">
+      Activo Empresa Única no tiene afiliación, vínculo comercial ni representación oficial con ningún banco, entidad financiera o institución educativa. Contenido exclusivamente informativo y educativo.
+    </div>
+    <div class="footer-grid">
+      <div>
+        <strong>Activo Empresa Única</strong><br>
+        Titular: Arconiris Sabogal Rodríguez<br>
+        Email: soporte@activoempresaunica.blog<br>
+        Dirección: Calle 13, Barquisimeto 2002, Venezuela
+      </div>
+      <div class="footer-legal-links">
+        <a onclick="openOverlay('acerca-de')">Acerca de</a>
+        <a onclick="openOverlay('politica-editorial')">Política editorial</a>
+        <a onclick="openOverlay('contacto')">Contacto</a>
+        <a onclick="openOverlay('privacidad')">Privacidad y cookies</a>
+        <a onclick="openOverlay('aviso-legal')">Aviso legal</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Activo Empresa Única. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<!-- ============ OVERLAYS DE ARTÍCULOS ============ -->
+
+<div class="overlay" id="overlay-a1">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('a1')">Cerrar ✕</button>
+    <h2>Cómo armar un presupuesto cuando el dinero es limitado</h2>
+    <div class="overlay-meta">10 de julio de 2026 · Por Arconiris Sabogal Rodríguez</div>
+    <p>Cuando el ingreso mensual es reducido o irregular, la sensación habitual es que "no hay nada que presupuestar". En realidad, mientras menos dinero entra, más importa saber exactamente a dónde va cada monto.</p>
+    <h3>El método de tres categorías</h3>
+    <p>Una forma sencilla de empezar es dividir cualquier ingreso, por pequeño que sea, en tres grupos: gastos esenciales (alimentación, transporte, materiales de estudio), ahorro mínimo (aunque sea un porcentaje simbólico) y gastos flexibles (ocio, imprevistos menores).</p>
+    <p>No se trata de un porcentaje fijo universal, sino de tener siempre presentes las tres categorías antes de gastar, en vez de decidir mes a mes sin ningún criterio.</p>
+    <h3>Registrar antes de recortar</h3>
+    <p>Antes de intentar "ahorrar más", conviene anotar durante dos o tres semanas en qué se gasta realmente el dinero. Muchas veces el problema no es la falta de ingresos, sino gastos pequeños y repetidos que pasan desapercibidos.</p>
+    <div class="disclaimer-box">Contenido informativo y educativo. No constituye asesoría financiera personalizada.</div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-a2">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('a2')">Cerrar ✕</button>
+    <h2>Qué es el ahorro universitario y por qué empezar aunque sea poco</h2>
+    <div class="overlay-meta">3 de julio de 2026 · Por Arconiris Sabogal Rodríguez</div>
+    <p>El ahorro universitario no se refiere a acumular grandes sumas, sino a desarrollar el hábito de reservar una parte del dinero disponible antes de gastarlo por completo.</p>
+    <h3>Por qué el hábito importa más que el monto</h3>
+    <p>Guardar una cantidad pequeña de forma constante entrena una conducta financiera que resulta útil más adelante, cuando los ingresos y responsabilidades crecen. El monto exacto es secundario frente a la regularidad.</p>
+    <h3>Un colchón mínimo para imprevistos</h3>
+    <p>Contar con un fondo pequeño, aunque cubra solo unos días de gastos básicos, reduce la necesidad de recurrir a préstamos informales o deudas de último momento ante un imprevisto.</p>
+    <div class="disclaimer-box">Contenido informativo y educativo. No constituye asesoría financiera personalizada.</div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-a3">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('a3')">Cerrar ✕</button>
+    <h2>Cómo evitar deudas innecesarias durante la carrera</h2>
+    <div class="overlay-meta">26 de junio de 2026 · Por Arconiris Sabogal Rodríguez</div>
+    <p>No toda deuda es negativa, pero comprometer ingresos futuros sin un motivo claro suele generar más presión de la que resuelve, especialmente durante los años de estudio.</p>
+    <h3>Preguntas antes de pedir prestado</h3>
+    <p>Antes de aceptar un préstamo o financiamiento, conviene preguntarse: ¿es un gasto que puede esperar?, ¿existe otra forma de cubrirlo sin comprometer ingresos futuros?, ¿con qué dinero concreto se va a pagar y en qué plazo?</p>
+    <h3>Deuda para necesidades frente a deuda por consumo</h3>
+    <p>Es útil distinguir entre endeudarse para algo indispensable y hacerlo para un consumo que podría posponerse. Esa diferencia suele marcar si la deuda ayuda a resolver una situación o si la complica.</p>
+    <div class="disclaimer-box">Contenido informativo y educativo. No constituye asesoría financiera personalizada.</div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-a4">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('a4')">Cerrar ✕</button>
+    <h2>Gastos fijos y gastos variables: la diferencia que cambia tu presupuesto</h2>
+    <div class="overlay-meta">19 de junio de 2026 · Por Arconiris Sabogal Rodríguez</div>
+    <p>Los gastos fijos son aquellos que se repiten cada mes con un monto similar, como el transporte habitual o una suscripción. Los variables cambian según decisiones diarias, como salidas o compras puntuales.</p>
+    <h3>Por qué separarlos ayuda</h3>
+    <p>Cuando ambos tipos de gasto se mezclan sin distinción, es difícil saber cuánto margen real queda disponible cada mes. Identificar primero los fijos permite calcular con claridad qué queda para lo variable.</p>
+    <h3>Un primer paso simple</h3>
+    <p>Hacer una lista de los compromisos fijos del mes, por pequeños que sean, es un ejercicio breve que ya ofrece una visión mucho más realista del presupuesto disponible.</p>
+    <div class="disclaimer-box">Contenido informativo y educativo. No constituye asesoría financiera personalizada.</div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-a5">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('a5')">Cerrar ✕</button>
+    <h2>Cinco hábitos prácticos para llegar mejor a fin de mes</h2>
+    <div class="overlay-meta">12 de junio de 2026 · Por Arconiris Sabogal Rodríguez</div>
+    <p>Llegar a fin de mes con menos tensión no suele depender de un solo cambio grande, sino de varios ajustes pequeños y sostenibles en el tiempo.</p>
+    <h3>Algunos hábitos útiles</h3>
+    <p>Revisar gastos pequeños repetidos, planificar las compras de la semana en vez de decidir sobre la marcha, esperar un día antes de compras no esenciales, separar el ahorro apenas se recibe el dinero y anotar los gastos, aunque sea de forma simple.</p>
+    <h3>La constancia por encima de la perfección</h3>
+    <p>Ningún hábito funciona si se abandona ante el primer mes difícil. Es preferible un ajuste modesto pero constante que un plan estricto que se deja de lado rápidamente.</p>
+    <div class="disclaimer-box">Contenido informativo y educativo. No constituye asesoría financiera personalizada.</div>
+  </div>
+</div>
+
+<!-- ============ OVERLAYS LEGALES / INSTITUCIONALES ============ -->
+
+<div class="overlay" id="overlay-acerca-de">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('acerca-de')">Cerrar ✕</button>
+    <h2>Acerca de</h2>
+    <p><strong>Activo Empresa Única</strong> es un blog independiente de divulgación financiera, escrito y publicado por Arconiris Sabogal Rodríguez.</p>
+    <h3>Objetivo</h3>
+    <p>Ofrecer contenido educativo, claro y verificable sobre manejo básico del dinero, dirigido principalmente a estudiantes universitarios que están comenzando a administrar sus propios ingresos.</p>
+    <h3>Método</h3>
+    <p>Cada artículo se redacta a partir de conceptos generales de educación financiera y, cuando se citan datos o entidades externas, se hace con fines exclusivamente descriptivos y con fuentes públicas de referencia.</p>
+    <h3>Declaración de independencia</h3>
+    <p>Este sitio no está afiliado, patrocinado ni representa a ningún banco, entidad financiera, institución educativa ni organismo público. No vende productos ni presta servicios financieros de ningún tipo.</p>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-politica-editorial">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('politica-editorial')">Cerrar ✕</button>
+    <h2>Política editorial</h2>
+    <h3>Criterios de publicación</h3>
+    <p>Los artículos buscan explicar conceptos financieros básicos de forma clara, sin promesas de resultados ni recomendaciones de inversión, crédito o productos específicos.</p>
+    <h3>Verificación de fuentes</h3>
+    <p>Cuando se mencionan datos, cifras o entidades externas, se procura citar fuentes públicas y oficiales. El sitio no reproduce logotipos ni enlaza a portales de acceso o inicio de sesión de terceros.</p>
+    <h3>Independencia frente a la publicidad</h3>
+    <p>La publicidad que pueda mostrarse en el sitio, a través de redes como Google AdSense, no influye en el contenido editorial ni en los temas tratados en los artículos.</p>
+    <h3>Correcciones</h3>
+    <p>Cualquier imprecisión señalada por un lector puede reportarse por el correo de contacto indicado en el pie del sitio, y será revisada por el titular.</p>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-contacto">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('contacto')">Cerrar ✕</button>
+    <h2>Contacto</h2>
+    <p>Para consultas editoriales, correcciones o comentarios sobre el contenido, podés escribir directamente por los siguientes medios:</p>
+    <p><strong>Titular:</strong> Arconiris Sabogal Rodríguez<br>
+    <strong>Email:</strong> soporte@activoempresaunica.blog<br>
+    <strong>WhatsApp / teléfono:</strong> +58 414-412-7324<br>
+    <strong>Dirección:</strong> Calle 13, Barquisimeto 2002, Venezuela</p>
+    <div class="disclaimer-box">Este sitio nunca solicitará contraseñas, datos bancarios, códigos de verificación ni documentos de identidad por ningún medio.</div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-privacidad">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('privacidad')">Cerrar ✕</button>
+    <h2>Política de privacidad y cookies</h2>
+    <h3>Datos que se recopilan</h3>
+    <p>Este sitio es de solo lectura y no incluye formularios de registro, suscripción ni captación de datos personales. La única información que puede recopilarse es la generada automáticamente por cookies técnicas y de medición.</p>
+    <h3>Cookies</h3>
+    <p>Se utilizan cookies propias y de terceros (por ejemplo, para análisis de audiencia o publicidad mediante Google AdSense) con el fin de mejorar la experiencia de navegación y mostrar anuncios relevantes. Podés aceptar o rechazar su uso desde el aviso de cookies del sitio.</p>
+    <h3>Terceros</h3>
+    <p>Servicios como Google AdSense pueden utilizar cookies propias sujetas a sus propias políticas de privacidad, ajenas a este sitio.</p>
+    <h3>Contacto sobre privacidad</h3>
+    <p>Cualquier consulta sobre esta política puede enviarse a soporte@activoempresaunica.blog.</p>
+  </div>
+</div>
+
+<div class="overlay" id="overlay-aviso-legal">
+  <div class="overlay-panel">
+    <button class="overlay-close" onclick="closeOverlay('aviso-legal')">Cerrar ✕</button>
+    <h2>Aviso legal</h2>
+    <h3>Titularidad</h3>
+    <p>Activo Empresa Única (activoempresaunica.blog) es un sitio de carácter independiente, cuyo titular y responsable de contenidos es Arconiris Sabogal Rodríguez, con domicilio en Calle 13, Barquisimeto 2002, Venezuela.</p>
+    <h3>Propiedad intelectual</h3>
+    <p>Los textos, marca, diseño y elementos gráficos originales de este sitio son propiedad del titular, salvo que se indique lo contrario. Se prohíbe su reproducción total o parcial sin autorización.</p>
+    <h3>Ausencia de afiliación</h3>
+    <p>Activo Empresa Única no tiene afiliación, vínculo comercial ni representación oficial con ningún banco, entidad financiera, institución educativa ni organismo público mencionado en sus contenidos.</p>
+    <h3>Responsabilidad sobre el contenido</h3>
+    <p>El contenido publicado tiene fines exclusivamente informativos y educativos. No constituye asesoría financiera, legal ni de ningún otro tipo, y su aplicación práctica queda bajo responsabilidad de cada lector.</p>
+  </div>
+</div>
+
+<!-- ============ COOKIES ============ -->
+<div class="cookie-banner" id="cookie-banner">
+  <div class="cookie-banner-inner">
+    <span>Usamos cookies propias y de terceros para análisis y publicidad. Podés leer más en nuestra <a href="#" style="color:#F7F4EE;" onclick="openOverlay('privacidad'); return false;">política de privacidad</a>.</span>
+    <button class="cookie-btn" onclick="acceptCookies()">Entendido</button>
+  </div>
+</div>
+
+<script>
+function openOverlay(id) {
+  document.getElementById('overlay-' + id).classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeOverlay(id) {
+  document.getElementById('overlay-' + id).classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.overlay').forEach(function(ov) {
+  ov.addEventListener('click', function(e) {
+    if (e.target === ov) {
+      ov.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+function acceptCookies() {
+  localStorage.setItem('aeu_cookies_accepted', 'true');
+  document.getElementById('cookie-banner').classList.remove('is-visible');
+}
+window.addEventListener('DOMContentLoaded', function() {
+  if (!localStorage.getItem('aeu_cookies_accepted')) {
+    document.getElementById('cookie-banner').classList.add('is-visible');
+  }
+});
+</script>
+
+</body>
+</html>
